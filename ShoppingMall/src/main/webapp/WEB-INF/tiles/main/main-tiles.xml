@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+<definition name="defaultLayout" template="/WEB-INF/views/layouts/layout.jsp">
+	<put-attribute name="header" value="/WEB-INF/views/layouts/main-header.jsp" />
+	<put-attribute name="container" />
+	<put-attribute name="footer" value="/WEB-INF/views/layouts/main-footer.jsp" />
+</definition>
+
+<definition name="board-layout" template="/WEB-INF/views/layouts/boardLayout/board-layout.jsp">
+	<put-attribute name="modal" value="/WEB-INF/views/layouts/boardLayout/board-write-modal.jsp" />
+	<put-attribute name="header" value="/WEB-INF/views/layouts/boardLayout/board-header.jsp" />
+	<put-attribute name="control" value="/WEB-INF/views/layouts/boardLayout/board-control.jsp"/>
+	
+	<put-attribute name="pre_modal" value="/WEB-INF/views/layouts/modalLayout/pre-modal.jsp"/>
+	<put-attribute name="post_modal" value="/WEB-INF/views/layouts/modalLayout/post-modal.jsp"/>
+	
+	<put-attribute name="container" />
+	<put-attribute name="footer" value="/WEB-INF/views/layouts/boardLayout/board-footer.jsp" />
+</definition>
+
+
+<definition name="/*.main-temp" extends="defaultLayout">
+	<put-attribute name="container" value="/WEB-INF/views/{1}.jsp" />
+</definition>
+<definition name="/*/*.main-temp" extends="defaultLayout">
+	<put-attribute name="container" value="/WEB-INF/views/{1}/{2}.jsp" />
+</definition>
+
+<definition name="/*.board-temp" extends="board-layout">
+	<put-attribute name="container" value="/WEB-INF/views/{1}.jsp" />
+</definition>
+<definition name="/*/*.board-temp" extends="board-layout">
+	<put-attribute name="container" value="/WEB-INF/views/{1}/{2}.jsp" />
+</definition>
+</tiles-definitions>
