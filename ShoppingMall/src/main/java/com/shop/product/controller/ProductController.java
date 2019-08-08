@@ -30,15 +30,15 @@ public class ProductController {
 	@RequestMapping(value = "/call_product", method = RequestMethod.GET)
 	public String login(Locale locale, Model model) {
 		
-		return "/product/adder";
+		return "product_registration";
 	}
-
+	
 	@RequestMapping(value = "/call_adder",method=RequestMethod.GET)
 	public String productadd(Product product)
 	{
 		int ret=0;
 		ret=pservice.productInfo(product);
-		return "index";
+		return "/product/addSuccess";
 	}
 	
 }
