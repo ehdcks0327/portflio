@@ -20,7 +20,6 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.admin.dto.QnA_Post;
-import com.shop.admin.dto.SignUp_Mail;
 import com.shop.admin.service.AdminServices;
 
 /**
@@ -56,38 +54,47 @@ public class AdminSubController {
 		return "/admin/board-qna.board-temp";
 	}
 	
-	@RequestMapping(value = "/sign_up")
-	public String sendMail(@RequestParam("uuid") String uuid, @RequestParam("u_id") int u_id, Model model) {
 		
-		
-		
-		
-		return "/admin/board-qna.board-temp";
-	}
+
 	
-	@RequestMapping(value = "/mail_test")
-	public String testMail(Model model, HttpServletRequest request) throws Exception {
-		String path = request.getServletContext().getRealPath("/resources/main/mail/sign-up-check-mail.html");
-		
-		String uuid = UUID.randomUUID().toString();
-		uuid = uuid.replace("-", "");
-		StringBuilder mailText = loadMail(path, uuid);		
-		
-		String u_id = "1";
-		insertUserRole(u_id, uuid);
-		
-		MimeMessage message = javaMailSenderImpl.createMimeMessage();
-		
-		message.setFrom(new InternetAddress("java.carnad@gmail.com"));
-		message.addRecipient(RecipientType.TO, new InternetAddress("gunzun@naver.com"));
-		message.setSubject("¿¬½À¿ë ¸ÞÀÏÀÔ´Ï´Ù.");
-		message.setText(mailText.toString(), "utf-8", "html");
-		
-		javaMailSenderImpl.send(message);
-		
-		return "/admin/board-qna.board-temp";
-	}
+//	@RequestMapping(value = "/sign_up")
+//	public String sendMail(@RequestParam("uuid") String uuid, @RequestParam("u_id") int u_id, Model model) {
+//		
+//		Map<String, Object> userRoleData = new HashMap<String, Object>();
+//		
+//		userRoleData.put("u_id", u_id);
+//		userRoleData.put("uuid", "'" + uuid + "'");
+//		
+//		int retval = service.modifyNewUserRole(userRoleData);
+//		
+//		
+//		return "/admin/board-qna.board-temp";
+//	}
 	
+//	@RequestMapping(value = "/mail_test")
+//	public String testMail(Model model, HttpServletRequest request) throws Exception {
+//		String path = request.getServletContext().getRealPath("/resources/main/mail/sign-up-check-mail.html");
+//		
+//		String uuid = UUID.randomUUID().toString();
+//		uuid = uuid.replace("-", "");
+//		int u_id = 1;
+//
+//		StringBuilder mailText = loadMail(path, u_id, uuid);		
+//		
+//		insertUserRole(u_id, uuid);
+//		
+//		MimeMessage message = javaMailSenderImpl.createMimeMessage();
+//		
+//		message.setFrom(new InternetAddress("java.carnad@gmail.com"));
+//		message.addRecipient(RecipientType.TO, new InternetAddress("gunzun@naver.com"));
+//		message.setSubject("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
+//		message.setText(mailText.toString(), "utf-8", "html");
+//		
+//		javaMailSenderImpl.send(message);
+//		
+//		return "/admin/board-qna.board-temp";
+//	}
+//	
 	
 	@RequestMapping(value = "/secret")
 	public String secretBoard(@RequestParam("page") String page, @RequestParam("u_id") String u_id, Model model) {
@@ -160,35 +167,35 @@ public class AdminSubController {
 		return model;
 	}
 	
-	private StringBuilder loadMail(String path, String uuid) throws IOException {
-		File file = new File(path);
-		FileReader fileReader = new FileReader(file);
-		
-		StringBuilder mailText = new StringBuilder();
-        BufferedReader buff = new BufferedReader(fileReader);
-        String pageContents;
-        while((pageContents = buff.readLine())!=null){
-            //System.out.println(pageContents);
-        	if (pageContents.contains("UUID_KEY")) {
-        		System.out.println("UUID : " + uuid);
-        		pageContents = pageContents.replace("UUID_KEY", uuid);
-			}
-        	mailText.append(pageContents);
-        	mailText.append("\r\n");
-        }
-        buff.close();
-        fileReader.close();
-        
-		return mailText;
-	}
+//	private StringBuilder loadMail(String path, int u_id, String uuid) throws IOException {
+//		File file = new File(path);
+//		FileReader fileReader = new FileReader(file);
+//		
+//		StringBuilder mailText = new StringBuilder();
+//        BufferedReader buff = new BufferedReader(fileReader);
+//        String pageContents;
+//        while((pageContents = buff.readLine())!=null){
+//            //System.out.println(pageContents);
+//        	if (pageContents.contains("U_ID")) {
+//        		pageContents = pageContents.replace("U_ID", String.valueOf(u_id));
+//        		pageContents = pageContents.replace("UUID_KEY", uuid);
+//			}
+//        	mailText.append(pageContents);
+//        	mailText.append("\r\n");
+//        }
+//        buff.close();
+//        fileReader.close();
+//        
+//		return mailText;
+//	}
 	
-	private void insertUserRole(String u_id, String uuid) {
-		Map<String, String> userRoleData = new HashMap<String, String>();
-		
-		userRoleData.put("u_id", u_id);
-		userRoleData.put("UUID", uuid);
-		
-		service.setUserRole(userRoleData);
-	}
+//	private void insertUserRole(int u_id, String uuid) {
+//		Map<String, Object> userRoleData = new HashMap<String, Object>();
+//		
+//		userRoleData.put("u_id", u_id);
+//		userRoleData.put("uuid", uuid);
+//		
+//		service.setUserRole(userRoleData);
+//	}
 	
 }

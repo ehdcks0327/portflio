@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!DOCTYPE html>
     <html lang="ko" dir="ltr">
       <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,8 +12,8 @@
         <link href="../resources/product/css/3.3.0/adder.css" rel="stylesheet" type="text/css">
         <script src="../resources/product/js/3.3.0/bootstrap.min.js"></script>
         <script src="../resources/jquery/1.11.1/jquery-1.11.1.min.js"></script>
-        <script src="../resources/ckeditor/ckeditor.js"></script>
-        <script src="../resources/ckeditor/samples/js/sample.js"></script>
+        <script src="<c:url value="/resources/ckeditor/ckeditor.js"/>"></script>
+        <script src="<c:url value="/resources/ckeditor/samples/js/sample.js"/>"></script>
 
       </head>
       </style>
@@ -70,6 +70,14 @@
               <label class="col-lg-2" for="p_name">상세 내용</label>
             </div>
      		<textarea id="editor" name="p_text" rows="8" cols="80"></textarea>
+     		  <script>
+			    CKEDITOR.replace('editor', {
+			      height:'400px',
+			      // Configure your file manager integration. This example uses CKFinder 3 for PHP.
+			      filebrowserUploadUrl: 'D:/github/portfolio/ShoppingMall/src/main/webapp/WEB-INF/views/product/upload.php',
+			      //filebrowserImageUploadUrl: '<c:url value="/resources/upload"/>'
+			    });
+  			  </script>
             <input type="submit" class="btn btn-primary" name="" value="등록">
           </fieldset>
         </form>

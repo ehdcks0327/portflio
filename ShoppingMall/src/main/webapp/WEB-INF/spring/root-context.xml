@@ -7,7 +7,7 @@
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/shopping_mall?useSSL=false"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/shopping_mall?serverTimezone=UTC"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="user1234"></property>
 	</bean>	
@@ -35,6 +35,11 @@
 		<constructor-arg ref="adminDAO"/>
 	</bean>
 	
+	<bean id="customProvider" class="com.shop.main.security.core.CustomAuthenticationProvider"/>
+	<bean id="userService" class="com.shop.main.security.core.CustomUserService"/>
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />	
+	
 	<bean id="productService" class="com.shop.product.service.ProductService">
 		<constructor-arg ref="productDAO"/>
 	</bean>	
@@ -52,7 +57,6 @@
                <prop key="mail.debug">true</prop>
          </props>
       </property>
- 
    </bean>	
 		
 </beans>

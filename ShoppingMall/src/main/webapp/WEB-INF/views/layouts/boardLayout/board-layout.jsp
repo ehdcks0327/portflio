@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ page session="false" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <html lang="en">
@@ -52,14 +52,15 @@
     }
   </style>
 <body>
-  <c:choose>
-  	<c:when test="${login} eq 'test'">
-  	  <tiles:insertAttribute name="post_modal" ignore="ture"/>
-  	</c:when>
-  	<c:otherwise>
-  	  <tiles:insertAttribute name="pre_modal" ignore="ture"/>
-  	</c:otherwise>
-  </c:choose>
+  <sec:authorize access="isAnonymous()">
+      <tiles:insertAttribute name="post_modal" ignore="ture"/>
+  
+  </sec:authorize>
+  <sec:authorize access="isAuthenticated()">
+      <tiles:insertAttribute name="pre_modal" ignore="ture"/>
+  
+  </sec:authorize>
+
   <tiles:insertAttribute name="header" ignore="ture"/>
   <tiles:insertAttribute name="control" ignore="ture"/>
   <div id="container_cover">

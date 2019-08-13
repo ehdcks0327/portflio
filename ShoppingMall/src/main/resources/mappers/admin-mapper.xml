@@ -11,6 +11,12 @@
  		<result property="que_date" column="que_date"/>
  		<result property="que_check" column="que_check"/>
  	</resultMap>
+ 	
+ 	 <resultMap type="User" id="User">
+ 		<result property="u_accound" column="u_account"/>
+ 		<result property="u_password" column="u_pw"/>
+ 		<result property="authorities" column="u_role"/>
+ 	</resultMap>
   	
  	<select id="getQnA_AllData" parameterType="int" resultMap="QnA_Post">
 		SELECT * FROM qna_qesution_table WHERE que_exist = 1 ORDER BY que_id DESC limit #{nowPage}, 10;
@@ -41,7 +47,34 @@
  	<insert id="setUserRole" parameterType="map">
  		INSERT INTO
   		 user_role_table(u_id, u_role) 
-  		VALUES(#{u_id}, #{UUID}};
+  		VALUES(#{u_id}, #{uuid});
  	</insert> 	
+ 	
+ 	<update id="modifyNewUserRole" parameterType="map">
+ 		UPDATE user_role_table
+ 		  SET u_enable = 'Y'
+ 		  WHERE u_id = ${u_id} AND u_enable = ${uuid}; 	
+ 	</update>
+ 	
+ 	<insert id="setUserData" parameterType="SignUp_Data" useGeneratedKeys="true" keyProperty="u_id">
+ 		INSERT INTO
+  		  user_table(u_account, u_nick, u_pw, u_zipcode, u_addr, u_addr_detail, u_mail, u_phone) 
+  		  VALUES(#{u_account}, #{u_nick}, #{u_pw}, #{u_zipcode}, #{u_addr}, #{u_addr_detail}, #{u_mail}, #{u_phone});
+ 	</insert> 	
+ 	
+ 	<insert id="setUserRoleData" parameterType="map">
+ 		INSERT INTO
+ 		  user_role_table(u_id, u_role, u_enable)
+ 		  VALUES(#{u_id}, #{u_role}, #{u_enable});
+ 	</insert>
+ 	
+ 	<select id="getUserDetailById" parameterType="String" resultMap="User">
+ 		SELECT
+ 		  ut.u_account, ut.u_pw, urt.u_role
+ 		FROM user_table as ut INNER JOIN user_role_table as urt
+ 		ON ut.u_id = urt.u_id
+ 		WHERE u_account = #{u_account};
+ 	</select>
+ 	
  	
 </mapper>

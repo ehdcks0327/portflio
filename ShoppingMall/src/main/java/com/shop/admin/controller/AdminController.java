@@ -28,13 +28,10 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "/ad_index")
 	public String adminIndex(Model model) {
-		return "/admin/index_admin";
+		return "/admin/index_admin.board-temp";
 	}
 	
-	@RequestMapping(value = "/ad_blank")
-	public String adminBlank(Model model) {
-		return "/admin/blank";
-	}
+
 	
 	@RequestMapping(value = "/ad_login")
 	public String adminLogin(Model model) {

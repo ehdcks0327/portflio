@@ -2,13 +2,14 @@ package com.shop.product.dto;
 
 public class Product {
 
-	private int p_id; 
-	private int c_id;    
-	private String p_name;
-	private String p_text;
-	private String p_title;   
-	private int p_price;  
-	private int p_quantity;
+	private int p_id; //상품번호
+	private int c_id; //카테고리번호   
+	private String p_name; //상품이름
+	private String p_text; //상품내용
+	private String p_title; //상품제목  
+	private int p_price; //가격 
+	private int p_quantity; //수량
+	private int u_id; //판매자아이디
 	public int getP_id() {
 		return p_id;
 	}
@@ -50,5 +51,13 @@ public class Product {
 	}
 	public void setP_quantity(int p_quantity) {
 		this.p_quantity = p_quantity;
-	}	
+	}
+	public int getU_id() {
+		return u_id;
+	}
+	public void setU_id(int u_id) {
+		this.u_id = u_id;
+	}
+	
+		
 }

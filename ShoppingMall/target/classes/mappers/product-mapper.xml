@@ -3,10 +3,25 @@
 
 <mapper namespace="com.shop.dao.ProductDAO">
   
-  <insert id="productInfo" parameterType="Product">
-  	INSERT INTO product
-  		(p_id, c_id, p_name, p_text, p_title, p_price, p_quantity) 
-  	VALUES (#{p_id},#{c_id},#{p_name},#{p_text},#{p_title},#{p_price},#{p_quantity})
-  </insert>
+	<!-- 상품등록 Add -->
+	<insert id="productAdd" parameterType="Product">
+		INSERT INTO product
+			(p_id, c_id, p_name, p_text, p_title, p_price, p_quantity, u_id) 
+		VALUES (#{p_id},#{c_id},#{p_name},#{p_text},#{p_title},#{p_price},#{p_quantity},#{u_id})
+	</insert>
 
+	<!-- 상품페이지 Read -->
+	<select id="productRead" parameterType="Product">
+		SELECT * FROM product WHERE p_id = #{p_id} and u_id = #{u_id} and c_id = #{c_id}
+	</select>
 </mapper>
+
+
+
+
+
+
+  <!-- 상품목록 가져오기 -->
+<!--    <select id="productlist" parameterType="Product"> -->
+<!--    	SELECT * FROM product; -->
+<!--    </select> -->

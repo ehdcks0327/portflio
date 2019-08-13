@@ -3,9 +3,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="QnA_Post" type="com.shop.admin.dto.QnA_Post"/>
+		<typeAlias alias="User" type="com.shop.main.security.role.User"/>
+		<typeAlias alias="SignUp_Data" type="com.shop.admin.dto.SignUp_Data"/>
 		<typeAlias alias="Product" type="com.shop.product.dto.Product"/>
 	</typeAliases>
-
 	<mappers>		
     	<mapper resource ="mappers/admin-mapper.xml"/>
     	<mapper resource ="mappers/product-mapper.xml"/>

@@ -8,68 +8,58 @@
   		<div class="modal-header card-header">
 		  <h4 class="modal-title" id="myModalLabel" style="margin: 0 auto; padding-left: 42px;">회원 가입</h4>
 		  <button type="button" class="close" data-dismiss="modal" style="margin-left: 0px;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		</div>
-		
-
-		
-		<form>
+		</div>		
+		<form id="signUp-form" action="/main/sign_up" method="POST">
       <div class="card-body">
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="firstName" class="form-control" placeholder="아이디" required="required" autofocus="autofocus">
+                  <input type="text" id="firstName" name="firstName" class="form-control" placeholder="아이디" required="required" autofocus="autofocus">
                   <label for="firstName">아이디</label>
                 </div>
               </div>
-              
             </div>
           </div>
-          
         <div class="form-group">
            <div class="form-row">
              <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="nickName" class="form-control" placeholder="닉네임" required="required">
+                  <input type="text" id="nickName" name="nickName" class="form-control" placeholder="닉네임" required="required">
                   <label for="nickName">닉네임</label>
                 </div>
               </div>
-              
             </div>
           </div>
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" required="required">
+                  <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="비밀번호" required="required">
                   <label for="inputPassword">비밀번호</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required="required">
+                  <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm password" required="required">
                   <label for="confirmPassword">비밀번호 확인</label>
                 </div>
               </div>
             </div>
           </div>
-
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
+              <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required="required">
               <label for="inputEmail">이메일 주소</label>
             </div>
           </div>
-         </div>
-         
-         
+         </div>    
          <div class="card-body">
-         
          <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="userName" class="form-control" placeholder="이름" required="required">
+                  <input type="text" id="userName" name="userName" class="form-control" placeholder="이름" required="required">
                   <label for="userName">이름</label>
                 </div>
               </div>
@@ -79,7 +69,7 @@
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="phone" class="form-control" placeholder="이름" required="required">
+                  <input type="text" id="phone" name="phone" class="form-control" placeholder="이름" required="required">
                   <label for="phone">전화번호</label>
                 </div>
               </div>
@@ -89,8 +79,8 @@
             <div class="form-row">
               <div class="col-md-6">
                 <div class="form-label-group">
-                  <input type="text" id="zoneCode" class="form-control" placeholder="우편번호" required="required" disabled>                
-                  <label for="zoneCode">우편번호</label>
+                  <input type="text" id="zoneCode" name="zoneCode" class="form-control" placeholder="우편번호" required="required" >                
+                  <label for="">우편번호</label>
                 </div>
               </div>
             </div>
@@ -98,25 +88,25 @@
          </div>
          <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="firstAddress" class="form-control" placeholder="기본 주소" required="required" disabled>
-              <label for="firstAdress">기본 주소</label>
+              <input type="text" id="firstAddress" name="firstAddress" class="form-control" placeholder="기본 주소" required="required">
+              <label for="">기본 주소</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="text" id="secondAddress" class="form-control" placeholder="상세 주소" required="required">
+              <input type="text" id="secondAddress" name="secondAddress" class="form-control" placeholder="상세 주소" required="required">
               <label for="secondAddress">상세 주소</label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="ad_login.html">등록하기</a>
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+          <button class="btn btn-primary btn-block" type="submit">등록하기</button>
+          
         <div class="text-center">
           <a class="d-block small mt-3" href="ad_login.html">로그인</a>
           <a class="d-block small" href="ad_forgot-password.html">비밀번호를 잊으셨나요?</a>
         </div>
           </div>
         </form>
-
-
     </div>
   </div>
 </div>
@@ -133,17 +123,17 @@
 		  <button type="button" class="close" data-dismiss="modal" style="margin-left: 0px;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 	  </div>
       <div class="card-body">
-        <form>
+        <form action="/main/sign_in" method="post">
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" id="loginEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-              <label for="loginEmail">Email address</label>
+              <input type="text" id="login_id" name="login_id" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+              <label for="login_id">ID</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="password" id="loginPassword" class="form-control" placeholder="Password" required="required">
-              <label for="loginPassword">Password</label>
+              <input type="password" id="login_pw" name="login_pw" class="form-control" placeholder="Password" required="required">
+              <label for="login_pw">Password</label>
             </div>
           </div>
           <div class="form-group">
@@ -154,9 +144,11 @@
               </label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="ad_index.html">Login</a>
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+          <button class="btn btn-primary btn-block" type="submit">Login</button>
         </form>
         <div class="text-center">
+        
           <a class="d-block small mt-3" href="ad_register.html">회원 가입</a>
           <a class="d-block small" href="ad_forgot-password.html">비밀번호를 잊으셨나요?</a>
         </div>
@@ -166,6 +158,7 @@
 </div> <!-- 모달 전체 윈도우 -->
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
 <script>
 	function onclickAction() {
 		var zonecode=null;
@@ -175,7 +168,6 @@
 				$('#firstAddress').attr('value', data.address);
 	        }
 	    }).open();
-	}
-	
+	}	
 </script>
 
