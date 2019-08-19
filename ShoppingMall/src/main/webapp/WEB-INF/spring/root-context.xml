@@ -36,14 +36,14 @@
 	</bean>
 	
 	<bean id="customProvider" class="com.shop.main.security.core.CustomAuthenticationProvider"/>
-	<bean id="userService" class="com.shop.main.security.core.CustomUserService"/>
-
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />	
+	<bean id="userService" class="com.shop.main.security.core.CustomUserService"/>	
 	
 	<bean id="productService" class="com.shop.product.service.ProductService">
 		<constructor-arg ref="productDAO"/>
-	</bean>	
-			
+	</bean>
+		
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+				
 	<bean id="mailSender" class = "org.springframework.mail.javamail.JavaMailSenderImpl">
       <property name="host" value="smtp.gmail.com" />
       <property name="port" value="587" />

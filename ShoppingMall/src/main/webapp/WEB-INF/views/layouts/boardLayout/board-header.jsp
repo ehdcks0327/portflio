@@ -13,7 +13,12 @@
           <a class="nav-link" href="about.html">About</a>
         </li>
         <li class="nav-item">
+<<<<<<< HEAD:ShoppingMall/src/main/webapp/WEB-INF/views/layouts/boardLayout/board-header.jsp
           <a class="nav-link" href="services.html">Services</a>
+=======
+          <a class="nav-link" href="${pageContext.request.contextPath}/product/list?pagenum=1&contentnum=10" method="post">Services</a>
+<!--           <a class="nav-link" href="/main/product/call_productList">Services</a> -->
+>>>>>>> parent of 6a19aaf... Revert "ckeditor(해결) 폴더 이미지 폴더 이동 맵핑 수정":ShoppingMall/src/main/webapp/WEB-INF/views/layouts/mainLayout/main-header.jsp
         </li>
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact</a>

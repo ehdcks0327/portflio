@@ -32,7 +32,8 @@
             <a class="nav-link" href="product/call_product">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="services.html">Services</a>
+<%--             <a class="nav-link" href="${pageContext.request.contextPath}/product/list?pagenum=1&contentnum=10" method="post">Services</a> --%>
+            <a class="nav-link" href="product/call_productList">Services</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>

@@ -3,34 +3,91 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="./../../../resources/product/product_commnat/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./../../../resources/product/product_commnat/css/custom2.css" rel="stylesheet">
+    <link href="./../../../resources/product/css/2.3.2/bootstrap-cobinde.min.css" rel="stylesheet" id="bootstrap-css">
+    <style media="screen">
+
+      .text {
+        width=10;
+      }
+      .pagination {
+        float : left;
+      }
+      .btn-toolbar {
+        float : right;
+      }
+      .container_footer::after {
+        content: "";
+        display: block;
+        clear : both;
+      }
+      .list p {
+        text-align: center;
+      }
+      .p_id {
+        width : 50px;
+      }
+      .p_title {
+        width : 674px;
+        text-align: center;
+      }
+      .u_nick {
+        width : 250px;
+      }
+      .p_data {
+        width: 100px;
+      }
+    </style>
   </head>
   <body>
-    <table class="table table-striped">
-      <thead>
-       <tr>
-         <th>번 호 </th>
-         <th>제 목</th>
-         <th>글쓴이</th>
-       </tr>
-       </thead>
-       <tr>
-         <td>1</td>
-         <td>테이블 테스트  테이블 테스트 테이블 테스트 </td>
-         <td>홍길동</td>
-       </tr>
-       <tr>
-         <td>2</td>
-         <td>테이블 테스트  테이블 테스트 테이블 테스트</td>
-         <td>임꺽정 </td>
-       </tr>
-       <tr>
-         <td>3</td>
-         <td>테이블 테스트  테이블 테스트 테이블 테스트</td>
-         <td>성춘향 </td>
-       </tr>
-     </table>
+    <body>
+      <div class="container">
+        <div class="list">
+          <div class="well" style="margin-top : 46px; height : 720px;">
+              <table class="table">
+                <thead>
+                  <tr class="list">
+                    <th class="p_id"><p>#</p></th>
+                    <th class="p_title"><p>제목</p></th>
+                    <th class="u_nick"><p>닉네임</p></th>
+                    <th class="P_date"><p>작성일</p></th>
+                  </tr>
+                </thead>
+                <c:forEach items="${productList}" var="productList">
+	                <tbody>
+	                  <tr>
+	                    <th class="p_id"><p>${product.p_id}</p></th>
+	                    <th class="p_title"><p>${product.p_title}</p></th>
+	                    <th class="u_nick"><p>${product.u_nick}</p></th>
+	                    <th class="P_date"><p>${product.p_date}</p></th>
+	                  </tr>
+	                </tbody>
+	             </c:forEach>
+              </table>
+          </div>
+          <div class="container_footer">
+            <div class="pagination">
+                <tr>
+                	<td colspan="2">
+                		<c:if test="${page.prev}">
+                			<a style="text-decoration: none;" href="javascript:page(${page.getStartPage()-1});">&laquo;</a>
+                		</c:if>
+                		<c:forEach begin="${page.getStartPage()}" end="${page.getEndPage()}" var="idx">
+                			<a style ="text-decoration: none;" href="javascript:page(${idx});">${idx}</a>
+                		</c:forEach>
+
+                		<c:if test="${page.next}">
+                			<a style="text-decoration: none;" href="javascript:page(${page.getEndPage()+1});">&raquo;</a>
+                		</c:if>
+                	</td>
+                </tr>
+            </div>
+            <div class="btn-toolbar">
+                <a href="call_product"><button class="btn btn-primary">상품등록</button></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </body>
   </body>
 </html>

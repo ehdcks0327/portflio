@@ -3,7 +3,10 @@ package com.shop.product.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.shop.dao.ProductDAO;
+
 import com.shop.product.dto.Product;
 
 public class ProductService implements ProductDAO {
@@ -25,9 +28,9 @@ public class ProductService implements ProductDAO {
 	}
 
 	@Override
-	public int productRead(Product product)
+	public List<Product> productRead()
 	{
-		return dao.productRead(product);
+		return dao.productRead();
 	}
 	
 	@Override
@@ -46,5 +49,18 @@ public class ProductService implements ProductDAO {
 	public List<Product> productList()
 	{
 		return dao.productList();
+	}
+	
+	
+	@Override
+	public List<Product> testlist(@Param("pagenum") int pagenum, @Param("contentnum") int contentnum)
+	{
+		return dao.testlist(pagenum, contentnum);
+	}
+	
+	@Override
+	public int testcount()
+	{
+		return dao.testcount();
 	}
 }

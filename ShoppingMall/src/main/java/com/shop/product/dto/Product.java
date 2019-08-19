@@ -9,7 +9,10 @@ public class Product {
 	private String p_title; //상품제목  
 	private int p_price; //가격 
 	private int p_quantity; //수량
-	private int u_id; //판매자아이디
+	private int u_id; //유저번호(판매자)
+	private String p_date; //등록기준 년/월/일/시분초
+    private String u_nick; //유저 닉네임(판매자)
+    
 	public int getP_id() {
 		return p_id;
 	}
@@ -58,6 +61,16 @@ public class Product {
 	public void setU_id(int u_id) {
 		this.u_id = u_id;
 	}
-	
-		
+	public String getP_date() {
+		return p_date;
+	}
+	public void setP_date(String p_date) {
+		this.p_date = p_date;
+	}
+	public String getU_nick() {
+		return u_nick;
+	}
+	public void setU_nick(String u_nick) {	
+		this.u_nick = u_nick;
+	}
 }

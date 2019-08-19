@@ -53,11 +53,11 @@
   </style>
 <body>
   <sec:authorize access="isAnonymous()">
-      <tiles:insertAttribute name="post_modal" ignore="ture"/>
+      <tiles:insertAttribute name="pre_modal" ignore="ture"/>
   
   </sec:authorize>
   <sec:authorize access="isAuthenticated()">
-      <tiles:insertAttribute name="pre_modal" ignore="ture"/>
+      <tiles:insertAttribute name="post_modal" ignore="ture"/>
   
   </sec:authorize>
 

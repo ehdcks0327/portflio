@@ -46,6 +46,12 @@ public class HomeController {
 	public String errorIndex(Model model) {
 		System.out.println("admin adminIndex");
 		return "/admin/blank.board-temp";
-	}	
+	}
+	
+	@RequestMapping(value = "/fileupload")
+	public String fileupload(Model model) {
+		System.out.println("CKEDITER TEST");
+		return "index";
+	}
 
 }

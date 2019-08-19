@@ -6,22 +6,32 @@
 	<!-- 상품등록 Add -->
 	<insert id="productAdd" parameterType="Product">
 		INSERT INTO product
-			(p_id, c_id, p_name, p_text, p_title, p_price, p_quantity, u_id) 
-		VALUES (#{p_id},#{c_id},#{p_name},#{p_text},#{p_title},#{p_price},#{p_quantity},#{u_id})
+			(p_id, c_id, p_name, p_text, p_title, p_price, p_quantity, u_id, p_date, u_nick) 
+		VALUES (#{p_id},#{c_id},#{p_name},#{p_text},#{p_title},#{p_price},#{p_quantity},#{u_id},NOW(),#{u_nick})
 	</insert>
 
-	<!-- 상품페이지 Read -->
-	<select id="productRead" parameterType="Product">
-		SELECT * FROM product WHERE p_id = #{p_id} and u_id = #{u_id} and c_id = #{c_id}
+ 	<!-- 상품목록페이지 List -->
+	<select id="productList" resultType="Product">
+		SELECT * FROM product 
+	</select>
+	<select id="testlist" resultType="Product">
+		SELECT * FROM product ORDER BY p_id DESC LIMIT #{pagenum}, #{contentnum}
+	</select>
+	
+	<select id="testcount" resultType="int">
+		SELECT COUNT(*) FROM product 
+	</select>
+	
+	<!-- 상품페이지 정보 -->
+	<select id="productRead" resultType="Product">
+		SELECT * FROM product
 	</select>
 </mapper>
 
 
+<!-- SELECT * FROM product WHERE p_id = #{p_id} and u_id = #{u_id} and c_id = #{c_id} -->
 
-
-
-
-  <!-- 상품목록 가져오기 -->
+<!-- 상품목록 가져오기 -->
 <!--    <select id="productlist" parameterType="Product"> -->
 <!--    	SELECT * FROM product; -->
 <!--    </select> -->

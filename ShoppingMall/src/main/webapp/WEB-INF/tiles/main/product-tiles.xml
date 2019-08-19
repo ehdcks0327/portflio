@@ -4,24 +4,19 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-	<!-- 상품등록 페이지  -->
-	<definition name="base_layout" template="/WEB-INF/views/product_layout/base_template.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/product_layout/product-header.jsp"></put-attribute>
-		<put-attribute name="container" value=""></put-attribute>
-		<put-attribute name="footer" value="/WEB-INF/views/product_layout/product-footer.jsp"></put-attribute>
-	</definition>
-	<definition name="product_registration" extends="base_layout">
-		<put-attribute name="container" value="/WEB-INF/views/product/adder.jsp"></put-attribute>
+	<definition name="product-layout" template="/WEB-INF/views/layouts/product_layout/product-layout.jsp">
+		<put-attribute name="css" value="/WEB-INF/views/layouts/product_layout/product-css.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/layouts/product_layout/product-header.jsp" />
+				
+		<put-attribute name="container" />
+		<put-attribute name="footer" value="/WEB-INF/views/layouts/product_layout/product-footer.jsp" />
+		<put-attribute name="script" value="/WEB-INF/views/layouts/product_layout/product-script.jsp" />	
 	</definition>
 	
+
 	
-	<!-- 상품구매 페이지  -->
-	<definition name="base_layout" template="/WEB-INF/views/product_layout/base_template.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/product_layout/product-header.jsp"></put-attribute>
-		<put-attribute name="container" value=""></put-attribute>
-		<put-attribute name="footer" value="/WEB-INF/views/product_layout/product-footer.jsp"></put-attribute>
+	<definition name="/*/*.product-temp" extends="product-layout">
+		<put-attribute name="container" value="/WEB-INF/views/{1}/{2}.jsp" />
 	</definition>
-	<definition name="product_page" extends="base_layout">
-		<put-attribute name="container" value="/WEB-INF/views/product/productpage.jsp"></put-attribute>
-	</definition>
+	
 </tiles-definitions>
